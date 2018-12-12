@@ -2,7 +2,7 @@
 	controllerName="ovly.fipe.controller.S0" displayBlock="true">
 	<App id="idAppControl">
 		<pages>
-			<Page title="FIPE - Roger Sudati">
+			<Page title="FIPE - RogerSudati">
 				<content>
 					<form:SimpleForm labelSpanM="3" emptySpanM="2" emptySpanL="2" layout="ResponsiveGridLayout">
 						<form:content>
