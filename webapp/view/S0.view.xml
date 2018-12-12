@@ -1,0 +1,72 @@
+<mvc:View xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="ovly.fipe.controller.S0" displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="Tabela FIPE">
+				<content>
+					<form:SimpleForm labelSpanM="3" emptySpanM="2" emptySpanL="2" layout="ResponsiveGridLayout">
+						<form:content>
+							<core:Title text="Filtros"/>
+							<Label text="Tipo do Veículo"/>
+							<Select forceSelection="true" selectedKey="{filtro>/tipo}" items="{tipo>/}" change="onChangeTipo">
+								<items>
+									<core:Item key="{tipo>codigo}" text="{tipo>nome}"/>
+								</items>
+							</Select>
+							<Label text="Marca"/>
+							<Select forceSelection="true" selectedKey="{filtro>/marca}" items="{marca>/}" change="onChangeMarca">
+								<items>
+									<core:Item key="{marca>codigo}" text="{marca>nome}"/>
+								</items>
+							</Select>
+							<Label text="Modelo"/>
+							<Select forceSelection="true" selectedKey="{filtro>/modelo}" items="{modelo>/modelos}" change="onChangeModelo">
+								<items>
+									<core:Item key="{modelo>codigo}" text="{modelo>nome}"/>
+								</items>
+							</Select>
+							<Label text="Anos"/>
+							<Select forceSelection="true" selectedKey="{filtro>/ano}" items="{anos>/}" change="onChangeAno">
+								<items>
+									<core:Item key="{anos>codigo}" text="{anos>nome}"/>
+								</items>
+							</Select>
+							<!--<Label text="Ano"/>-->
+							<!--<Slider min="1970" max="2020" value="{filtro>/ano}" showAdvancedTooltip="true" showHandleTooltip="false" inputsAsTooltips="true"-->
+							<!--	class="sapUiMediumMarginTop"/>-->
+						</form:content>
+					</form:SimpleForm>
+					<Toolbar>
+						<content>
+							<ToolbarSpacer/>
+							<Button text="Adicionar" press="onAdd"/>
+						</content>
+					</Toolbar>
+					<IconTabBar items="{veiculos>/}" expandable="false" expand="true">
+						<items>
+							<IconTabFilter text="{veiculos>modelo}" icon="{model: 'veiculos', path: 'tipo', formatter: '.formatIcon' }" >
+								<content>
+									<ObjectHeader intro="{veiculos>marca}" title="{veiculos>modelo}" number="{veiculos>ano}"/>
+									<form:SimpleForm labelSpanM="3" emptySpanM="2" emptySpanL="2" layout="ResponsiveGridLayout">
+										<form:content>
+											<Label text="Código FIPE"/>
+											<ObjectIdentifier title="{veiculos>fipe}"/>
+											<Label text="Combustível"/>
+											<CheckBox text="Gasolina" selected="{veiculos>combustivel/gasolina}"/>
+											<CheckBox text="Álcool" selected="{veiculos>combustivel/alcool}"/>
+											<CheckBox text="Diesel" selected="{veiculos>combustivel/diesel}"/>
+											<Label text="Valor"/>
+											<ObjectNumber number="{veiculos>valor}"/>
+											<Label text=""/>
+											<Button text="Excluir" type="Reject" press="onDelete"/>
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
